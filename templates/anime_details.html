@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} {{ anime.title }} - Details {% endblock %}
+
+{% block content %}
+<div class="row align-items-start py-3">
+    <div class="col-md-4 mb-4 mb-md-0 text-center">
+        <img src="{{ url_for('static', filename='images/' + anime.image) }}"
+             class="img-fluid rounded shadow border border-secondary" alt="{{ anime.title }}"
+             style="max-height: 450px; object-fit: cover;"></div>
+    <div class="col-md-8">
+        <h1 style="color: #ff6600; font-size: 2.5rem;">{{ anime.title }}</h1>
+        <p class="text-muted fs-5">Year: {{ anime.release_year }}</p>
+
+        <div class="details-box my-4">
+            <h5 class="text-white-50 mb-2">📜 Summary / Synopsis:</h5>
+            <p class="fs-5" style="line-height: 1.6; color: #e5e5e5;">
+                {{ info if info else "No info provided for this language yet." }}
+            </p>
+        </div>
+
+        <a href="/" class="btn btn-outline-orange mt-3">← Return Home</a>
+    </div>
+</div>
+{% endblock %}

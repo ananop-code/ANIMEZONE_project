@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="mb-4" style="color: #ff6600;">Add / Edit Anime Page</h1>
+
+<div class="row justify-content-center">
+    {% for errors in form.errors.values() %}
+        <div class="alert alert-danger">
+            {% for error in errors %}
+                {{ error }}
+            {% endfor %}
+        </div>
+    {% endfor %}
+
+    <form method="POST" enctype="multipart/form-data" class="col-md-8 p-4 bg-dark rounded border border-secondary shadow">
+        {{ form.hidden_tag() }}
+
+        <div class="mb-3">
+            <label class="form-label text-white-50">Upload Poster Image</label>
+            {{ form.image(class="form-control", accept=".png, .jpg, .jpeg") }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label text-white-50">Anime Title</label>
+            {{ form.title(class="form-control", placeholder="e.g., Attack on Titan") }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label text-white-50">Release Year</label>
+            {{ form.release_year(class="form-control", placeholder="e.g., 2013") }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label text-white-50">Description (English)</label>
+            {{ form.description_en(class="form-control", rows="3", placeholder="Write English description here...") }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label text-white-50">აღწერა (ქართულად)</label>
+            {{ form.description_ka(class="form-control", rows="3", placeholder="დაწერეთ აღწერა ქართულად...") }}
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label text-white-50">説明 (日本語)</label>
+            {{ form.description_ja(class="form-control", rows="3", placeholder="日本語の説明を入力してください...") }}
+        </div>
+
+        <div class="mt-4">
+            {{ form.submit(class="btn btn-orange w-100 py-2") }}
+        </div>
+    </form>
+</div>
+{% endblock %}
